@@ -246,28 +246,58 @@ void GetMainInput() {
 
         switch (op) {
             case "1":
-                InsertNewHabit();
+                try {
+                    InsertNewHabit();
+                } catch (Exception ex) {
+                    DealWithError(ex);
+                }
                 break;
             case "2":
-                InsertHabitEntry();
+                try {
+                    InsertHabitEntry();
+                } catch (Exception ex) {
+                    DealWithError(ex);
+                }
                 break;
             case "3":
-                UpdateHabitEntry();
+                try {
+                    UpdateHabitEntry();
+                } catch (Exception ex) {
+                    DealWithError(ex);
+                }
                 break;
             case "4":
-                DeleteHabitEntry();
+                try {
+                    DeleteHabitEntry();
+                } catch (Exception ex) {
+                    DealWithError(ex);
+                }
                 break;
             case "5":
-                DeleteAHabit();
+                try {
+                    DeleteAHabit();
+                } catch (Exception ex) {
+                    DealWithError(ex);
+                }
                 break;
             case "6":
-                ShowHabitInformation();
+                try {
+                    ShowHabitInformation();
+                } catch (Exception ex) {
+                    DealWithError(ex);
+                }
                 break;
             case "7":
-                ListHabits();
+                try {
+                    ListHabits();
+                } catch (Exception ex) {
+                    DealWithError(ex);
+                }
                 break;
             case "0":
+                Console.WriteLine("\nGoodbye");
                 isRunning = false;
+                Environment.Exit(0);
                 break;
             default:
                 Console.WriteLine("Invalid input");
@@ -276,4 +306,8 @@ void GetMainInput() {
 
         Console.WriteLine("-------------------------------------------\n");
     }
+}
+
+void DealWithError(Exception ex) {
+    Console.WriteLine("Something Went wrong! Check what you typed, you might have typed the name of the habit incorrectly!");
 }
