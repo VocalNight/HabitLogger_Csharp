@@ -47,7 +47,7 @@ void InsertNewHabit() {
     Console.WriteLine("Type the name of the habit you want to create");
     string habit = Console.ReadLine();
 
-    using (var connection = new SqliteConnection("Data Source=habits.db")) {
+    using (var connection = new SqliteConnection(connectionAdress)) {
         connection.Open();
 
         var command = connection.CreateCommand();
@@ -65,7 +65,7 @@ void InsertNewHabit() {
 }
 
 void ListHabits() {
-    using (var connection = new SqliteConnection("Data Source=habits.db")) {
+    using (var connection = new SqliteConnection(connectionAdress)) {
         connection.Open();
 
         var command = connection.CreateCommand();
@@ -85,13 +85,13 @@ void ListHabits() {
     }
 }
 
-void ShowHabitInformation() {
+void ViewHabitEntries() {
 
     Console.WriteLine("Type the name of the habit you want to check");
     string habit = Console.ReadLine();
 
 
-    using (var connection = new SqliteConnection("Data Source=habits.db")) {
+    using (var connection = new SqliteConnection(connectionAdress)) {
         connection.Open();
 
         var command = connection.CreateCommand();
@@ -127,7 +127,7 @@ void InsertHabitEntry() {
     string date = GetDateInput();
 
 
-    using (var connection = new SqliteConnection("Data Source=habits.db")) {
+    using (var connection = new SqliteConnection(connectionAdress)) {
         connection.Open();
 
         var command = connection.CreateCommand();
@@ -194,7 +194,7 @@ void DeleteHabitEntry() {
     Console.WriteLine("Whats the id of the entry you want to delete?");
     string id = Console.ReadLine();
 
-    using (var connection = new SqliteConnection("Data Source=habits.db")) {
+    using (var connection = new SqliteConnection(connectionAdress)) {
         connection.Open();
 
         var command = connection.CreateCommand();
@@ -210,7 +210,7 @@ void DeleteHabitEntry() {
 }
 
 string GetDateInput() {
-    Console.WriteLine("\nPlease insert the date in the formate dd-mm-yyyy. Type 0 to return to the main menu");
+    Console.WriteLine("\nPlease insert the date in the format dd-mm-yyyy. Type 0 to return to the main menu");
 
     string dateInput = Console.ReadLine();
 
@@ -282,7 +282,7 @@ void GetMainInput() {
                 break;
             case "6":
                 try {
-                    ShowHabitInformation();
+                    ViewHabitEntries();
                 } catch (Exception ex) {
                     DealWithError(ex);
                 }
